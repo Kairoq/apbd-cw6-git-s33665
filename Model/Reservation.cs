@@ -2,7 +2,7 @@
 
 namespace apbd_cw5_git_s33665.Model;
 
-public class Reservation
+public class Reservation :  IValidatableObject
 {
     public int Id { get; set; }
 
@@ -26,5 +26,13 @@ public class Reservation
 
     [Required(ErrorMessage = "Status not provided")]
     public string Status { get; set; }
-    
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (EndTime.Value <= StartTime.Value)
+        {
+            yield return new ValidationResult("Reservation end time must be after start time", 
+                new[] { nameof(EndTime) }); 
+        }
+    }
 }
