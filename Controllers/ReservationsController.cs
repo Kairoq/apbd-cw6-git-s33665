@@ -47,10 +47,10 @@ public class ReservationsController : ControllerBase
         }
 
         bool isOverlaping = Data.Reservations.Any(r =>
-            r.RoomId == newReservation.Id
+            r.RoomId == newReservation.RoomId
             && r.Date == newReservation.Date
-            && newReservation.StartTime < r.StartTime
-            && newReservation.EndTime > r.EndTime);
+            && newReservation.StartTime < r.EndTime
+            && newReservation.EndTime > r.StartTime);
 
         if (isOverlaping)
         {
@@ -61,5 +61,17 @@ public class ReservationsController : ControllerBase
         Data.Reservations.Add(newReservation);
 
         return CreatedAtAction(nameof(GetReservationById), new { id = newReservation.Id }, newReservation);
+    }
+    
+    [HttpDelete("{id:int}")]
+    public IActionResult DeleteReservation(int id)
+    {
+        var reservation = Data.Reservations.FirstOrDefault(r => r.Id == id);
+        if (reservation == null)
+        {
+            return NotFound($"Reservation with ID {id} not found.");
+        }
+        Data.Reservations.Remove(reservation);
+        return NoContent();
     }
 }
