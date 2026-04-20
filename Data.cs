@@ -23,21 +23,21 @@ public static class Data
             Status = "confirmed" 
         });
         Reservations.Add(new Reservation { 
-            Id = 1, RoomId = 2, OrganizerName = "Izajasz", Topic = "Proroctwa wszelkiego rodzaju", 
+            Id = 2, RoomId = 2, OrganizerName = "Izajasz", Topic = "Proroctwa wszelkiego rodzaju", 
             Date = new DateOnly(2023, 2, 2), 
             StartTime = new TimeSpan(8, 0, 0), 
             EndTime = new TimeSpan(10, 0, 0), 
             Status = "confirmed" 
         });
         Reservations.Add(new Reservation { 
-            Id = 1, RoomId = 3, OrganizerName = "Szymon Piotr", Topic = "Nauka chodzenia po wodzie", 
+            Id = 3, RoomId = 3, OrganizerName = "Szymon Piotr", Topic = "Nauka chodzenia po wodzie", 
             Date = new DateOnly(2023, 3, 3), 
             StartTime = new TimeSpan(8, 0, 0), 
             EndTime = new TimeSpan(10, 0, 0), 
             Status = "confirmed" 
         });
         Reservations.Add(new Reservation { 
-            Id = 1, RoomId = 1, OrganizerName = "Mojżesz", Topic = "Od Egiptu po ziemię Kanaan", 
+            Id = 4, RoomId = 1, OrganizerName = "Mojżesz", Topic = "Od Egiptu po ziemię Kanaan", 
             Date = new DateOnly(2023, 4, 4), 
             StartTime = new TimeSpan(8, 0, 0), 
             EndTime = new TimeSpan(10, 0, 0), 

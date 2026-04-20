@@ -85,6 +85,11 @@ public class RoomsController : ControllerBase
         {
             return NotFound();
         }
+        bool hasReservation = Data.Rooms.Any(r => r.Id == id);
+        if (hasReservation)
+        {
+            return Conflict($"Room {id} has reservation");
+        }
         Data.Rooms.Remove(room);
         return NoContent();
     }
