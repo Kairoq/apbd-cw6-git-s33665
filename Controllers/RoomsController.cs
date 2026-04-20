@@ -12,4 +12,24 @@ public class RoomsController : ControllerBase
     {
         return(Ok(Data.Rooms));
     }
+
+    [HttpGet("{id:int}")]
+    public IActionResult GetRoomById(int id)
+    {
+        var room = Data.Rooms.FirstOrDefault(r => r.Id == id);
+        if  (room == null)
+        {
+            return NotFound($"Room {id} not found");
+        }
+        return Ok(room);
+    }
+
+    [HttpGet("building/{buildingCode}")]
+    public IActionResult GetRoomsByBuildingCode(string buildingCode)
+    {
+        var rooms = Data.Rooms.
+            Where(r => r.BuildingCode.Equals(buildingCode, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+        return Ok(rooms);
+    }
 }
